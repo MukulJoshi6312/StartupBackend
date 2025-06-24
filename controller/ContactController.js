@@ -68,3 +68,30 @@ export const updateQueryStatus = async(req,res)=>{
   return res.status(500).json({ success: false, message: "Server error", error: error.message });
   }
 }
+
+export const deleteQuery = async(req,res)=>{
+  try{
+
+    const {id} = req.params;
+
+    const query = await Contact.findByIdAndDelete(id);
+    if(!query){
+      return res.status(404).json({
+        success:false,
+        message:"Query not found",
+      })
+    }
+
+    return res.status(200).json({
+      success:true,
+      message:"Query deleted successfully."
+    })
+
+
+  }catch(error){
+    return res.status(500).json({
+      success:false,
+      message:error.message,
+    })
+  }
+}
