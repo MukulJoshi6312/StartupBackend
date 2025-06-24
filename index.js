@@ -17,7 +17,7 @@ database();
 app.use('/api/v1',contactRouter)
 
 
-app.get("/api/v1",(req,res)=>{
+app.get("/",(req,res)=>{
     res.send("<h1>Server is running successfully </h1>")
 })
 
