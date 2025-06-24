@@ -61,7 +61,7 @@ export const updateQueryStatus = async(req,res)=>{
 
     return res.status(200).json({
       success:true,
-      message:"Status change successfully"
+      message:"Status change successfully!"
     })
 
   }catch(error){
