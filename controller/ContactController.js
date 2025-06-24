@@ -3,17 +3,18 @@ import Contact from "../models/contact.js";
 export const ContactDetails = async(req,res)=>{
     try{
 
-        const {name,email,service,about:projectDetail,country} = req.body;
+        const {name,email,phoneNumber,service,about:projectDetail,country} = req.body;
 
-        console.log(name,  email , service ,  projectDetail ,  country)
+        console.log(name,email,phoneNumber,service,projectDetail,country);
 
-        if(!name || !email || !service || !projectDetail || !country){
+
+        if(!name || !email || !phoneNumber  || !service || !projectDetail || !country){
             res.status(403,).json({
                 success:false,
                 message:"Missing required fileds"
             })
         }
-        await Contact.create({name,email,service,projectDetail,country});
+        await Contact.create({name,email,phoneNumber,service,projectDetail,country});
         res.status(200).json({
             success:true,
             message:"Your query successfully submited."
